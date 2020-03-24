@@ -1,10 +1,85 @@
 import './style/main.styl'
 import * as THREE from 'three'
+// JS Classes import
 import River from './javascript/River.js'
 import Louvre from './javascript/Louvre.js'
 import Orsay from './javascript/Orsay.js'
 import Pompidou from './javascript/Pompidou.js'
 import Palais from './javascript/Palais.js'
+// Images import
+import imageLouvre1Source from './images/louvre1.jpg'
+import imageLouvre2Source from './images/louvre2.jpg'
+import imageLouvre3Source from './images/louvre3.jpg'
+import imageOrsay1Source from './images/orsay1.jpg'
+import imageOrsay2Source from './images/orsay2.jpg'
+import imageOrsay3Source from './images/orsay3.jpg'
+import imagePompidou1Source from './images/pompidou1.jpg'
+import imagePompidou2Source from './images/pompidou2.jpg'
+import imagePompidou3Source from './images/pompidou3.jpg'
+import imagePalais1Source from './images/palais1.jpg'
+import imagePalais2Source from './images/palais2.jpg'
+import imagePalais3Source from './images/palais3.jpg'
+
+/**
+ * Images
+ */
+
+// Louvre
+const imageLouvre1 = new Image()
+imageLouvre1.src = imageLouvre1Source
+document.querySelector('.js-louvre-pictures').appendChild(imageLouvre1)
+
+const imageLouvre2 = new Image()
+imageLouvre2.src = imageLouvre2Source
+document.querySelector('.js-louvre-pictures').appendChild(imageLouvre2)
+
+const imageLouvre3 = new Image()
+imageLouvre3.src = imageLouvre3Source
+document.querySelector('.js-louvre-pictures').appendChild(imageLouvre3)
+
+// Orsay
+const imageOrsay1 = new Image()
+imageOrsay1.src = imageOrsay1Source
+document.querySelector('.js-orsay-pictures').appendChild(imageOrsay1)
+
+const imageOrsay2 = new Image()
+imageOrsay2.src = imageOrsay2Source
+document.querySelector('.js-orsay-pictures').appendChild(imageOrsay2)
+
+const imageOrsay3 = new Image()
+imageOrsay3.src = imageOrsay3Source
+document.querySelector('.js-orsay-pictures').appendChild(imageOrsay3)
+
+// Pompidou
+const imagePompidou1 = new Image()
+imagePompidou1.src = imagePompidou1Source
+document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou1)
+
+const imagePompidou2 = new Image()
+imagePompidou2.src = imagePompidou2Source
+document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou2)
+
+const imagePompidou3 = new Image()
+imagePompidou3.src = imagePompidou3Source
+document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou3)
+
+// Grand Palais
+const imagePalais1 = new Image()
+imagePalais1.src = imagePalais1Source
+document.querySelector('.js-palais-pictures').appendChild(imagePalais1)
+
+const imagePalais2 = new Image()
+imagePalais2.src = imagePalais2Source
+document.querySelector('.js-palais-pictures').appendChild(imagePalais2)
+
+const imagePalais3 = new Image()
+imagePalais3.src = imagePalais3Source
+document.querySelector('.js-palais-pictures').appendChild(imagePalais3)
+
+
+/***********************************************************************************
+ ************************************** Three JS
+ ***********************************************************************************/
 
 /**
  * Sizes
@@ -26,11 +101,6 @@ window.addEventListener('mousemove', (_event) => {
 })
 
 /**
- * Images
- */
-// ici instancier les photos de chaque musée
-
-/**
  * Scene
  */
 const scene = new THREE.Scene()
@@ -42,7 +112,6 @@ scene.background = new THREE.Color(0xffffff)
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.2)
 scene.add(ambientLight)
-
 
 
 /**
