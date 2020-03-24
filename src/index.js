@@ -2,9 +2,9 @@ import './style/main.styl'
 import * as THREE from 'three'
 // import River from './javascript/River.js'
 import Louvre from './javascript/Louvre.js'
-// import Orsay from './javascript/Orsay.js'
-// import Pompidou from './javascript/Pompidou.js'
-// import Palais from './javascript/Palais.js'
+import Orsay from './javascript/Orsay.js'
+import Pompidou from './javascript/Pompidou.js'
+import Palais from './javascript/Palais.js'
 
 /**
  * Sizes
@@ -55,16 +55,22 @@ const louvre = new Louvre()
 scene.add(louvre.group)
 
 // Orsay
+const orsay = new Orsay()
+scene.add(orsay.group)
 
 // Pompidou
+const pompidou = new Pompidou()
+scene.add(pompidou.group)
 
 // Palais
+const palais = new Palais()
+scene.add(palais.group)
 
 /**
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 20)
-camera.position.z = 3
+camera.position.z = 8
 scene.add(camera)
 
 /**
