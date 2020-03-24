@@ -1,6 +1,6 @@
 import './style/main.styl'
 import * as THREE from 'three'
-// import River from './javascript/River.js'
+import River from './javascript/River.js'
 import Louvre from './javascript/Louvre.js'
 import Orsay from './javascript/Orsay.js'
 import Pompidou from './javascript/Pompidou.js'
@@ -34,6 +34,7 @@ window.addEventListener('mousemove', (_event) => {
  * Scene
  */
 const scene = new THREE.Scene()
+scene.background = new THREE.Color(0xffffff)
 
 /**
  * Lights
@@ -49,6 +50,8 @@ scene.add(ambientLight)
  */
 
 // River
+const river = new River(sizes)
+scene.add(river.group)
 
 // Louvre
 const louvre = new Louvre()
