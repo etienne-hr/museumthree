@@ -16,6 +16,7 @@ export default class Louvre {
             '/models/Louvre.gltf',
             (_gltf) => {
                 this.louvre = _gltf.scene.children[0]
+                this.louvre.position.x = 5
                 this.group.add(this.louvre)
             }
         )

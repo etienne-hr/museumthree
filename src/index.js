@@ -5,6 +5,7 @@ import Louvre from './javascript/Louvre.js'
 import Orsay from './javascript/Orsay.js'
 import Pompidou from './javascript/Pompidou.js'
 import Palais from './javascript/Palais.js'
+import { TweenLite } from 'gsap/all'
 
 /**
  * Sizes
@@ -26,6 +27,10 @@ window.addEventListener('mousemove', (_event) => {
 })
 
 /**
+ * raycaster
+ */
+const raycaster = new THREE.Raycaster()
+/**
  * Images
  */
 // ici instancier les photos de chaque musée
@@ -41,8 +46,6 @@ const scene = new THREE.Scene()
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.2)
 scene.add(ambientLight)
-
-
 
 /**
  * Objects
@@ -69,8 +72,9 @@ scene.add(palais.group)
 /**
  * Camera
  */
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 20)
+const camera = new THREE.PerspectiveCamera(100, sizes.width / sizes.height, 0.1, 20)
 camera.position.z = 8
+camera.position.x = 10
 scene.add(camera)
 
 /**
@@ -100,13 +104,64 @@ window.addEventListener('resize', () => {
 // mettre ici le zoom au clic sur un musée
 
 /**
+ * animation
+ */
+
+document.addEventListener('click', () =>
+{
+    if(hoverLouvre)
+    {
+        console.log('click sur le musée')
+
+        TweenLite.to(
+            camera.position,
+            1,
+            {
+                // x: camera.position.x - 5,
+                z: camera.position.z = 3,
+                ease: 'Power3.easeInOut',
+                // onComplete: () =>
+                // {
+                //     console.log('terminé')
+
+                //     TweenLite.to(
+                //         camera.position,
+                //         1,
+                //         {
+                //             y: camera.position.y + 1,
+                //             x: camera.position.x + 1,
+                //         }
+                //     )
+                // }
+            }
+        )
+    }
+})
+
+/**
  * Loop
  */
-const loop = () => {
+let hoverLouvre = false
+const loop = () =>
+{
     window.requestAnimationFrame(loop)
 
-    //camera
+    // Camera
     camera.lookAt(scene.position)
+
+    // Cursor raycasting
+    const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
+    raycaster.setFromCamera(raycasterCursor, camera)
+
+    const intersects = raycaster.intersectObject(louvre.group, true)
+    if(intersects.length)
+    {
+        hoverLouvre = true
+    }
+    else
+    {
+        hoverLouvre = false
+    }
 
     // Render
     renderer.render(scene, camera)

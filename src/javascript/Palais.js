@@ -16,7 +16,7 @@ export default class Palais {
             '/models/Palais.gltf',
             (_gltf) => {
                 this.palais = _gltf.scene.children[0]
-                this.palais.position.x = -10
+                this.palais.position.x = -5
                 this.group.add(this.palais)
             }
         )
