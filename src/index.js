@@ -103,7 +103,7 @@ window.addEventListener('resize', () => {
  */
 // mettre ici le zoom au clic sur un musée
 
-/**
+/*
  * animation
  */
 
