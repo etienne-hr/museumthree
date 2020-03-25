@@ -16,6 +16,7 @@ export default class Pompidou {
             '/models/Pompidou.gltf',
             (_gltf) => {
                 this.pompidou = _gltf.scene.children[0]
+                this.pompidou.scale.set(0.05, 0.05, 0.05)
                 this.pompidou.position.x = 60
                 this.group.add(this.pompidou)
             }
