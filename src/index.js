@@ -270,42 +270,6 @@ buttonOrsay.addEventListener('click', () => {
         )
 })
 
-// if(musepute == true){
-//     buttonOrsay.addEventListener('click', () => {
-
-//         buttonPalais.classList.remove('is-unactiv')
-//         buttonOrsay.classList.add('is-unactiv')
-//         buttonLouvre.classList.add('is-unactiv')
-//         buttonPompidou.classList.add('is-unactiv')
-//         buttonOrsay.classList.remove('is-back')
-
-//         TweenLite.to(
-//             palais.palais.position,
-//             1,
-//             {
-//                 x: palais.position = -20,
-//                 ease: 'Power3.easeInOut',
-//             }
-//         )
-//         TweenLite.to(
-//             orsay.orsay.position,
-//             1,
-//             {
-//                 x: orsay.position = 0,
-//                 ease: 'Power3.easeInOut',
-//             }
-//         )
-//         TweenLite.to(
-//             louvre.louvre.position,
-//             1,
-//             {
-//                 x: louvre.position = 20,
-//                 ease: 'Power3.easeInOut',
-//             }
-//         )
-// })
-// musepute = false
-// }
 //louvre
 buttonLouvre.addEventListener('click', () => {
 
