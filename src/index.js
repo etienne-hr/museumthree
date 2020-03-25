@@ -34,57 +34,57 @@ buttonPompidou.classList.add('is-unactiv')
  * Images
  */
 
-// // Louvre
-// const imageLouvre1 = new Image()
-// imageLouvre1.src = imageLouvre1Source
-// document.querySelector('.js-louvre-pictures').appendChild(imageLouvre1)
+// Louvre
+const imageLouvre1 = new Image()
+imageLouvre1.src = imageLouvre1Source
+document.querySelector('.js-louvre-pictures').appendChild(imageLouvre1)
 
-// const imageLouvre2 = new Image()
-// imageLouvre2.src = imageLouvre2Source
-// document.querySelector('.js-louvre-pictures').appendChild(imageLouvre2)
+const imageLouvre2 = new Image()
+imageLouvre2.src = imageLouvre2Source
+document.querySelector('.js-louvre-pictures').appendChild(imageLouvre2)
 
-// const imageLouvre3 = new Image()
-// imageLouvre3.src = imageLouvre3Source
-// document.querySelector('.js-louvre-pictures').appendChild(imageLouvre3)
+const imageLouvre3 = new Image()
+imageLouvre3.src = imageLouvre3Source
+document.querySelector('.js-louvre-pictures').appendChild(imageLouvre3)
 
-// // Orsay
-// const imageOrsay1 = new Image()
-// imageOrsay1.src = imageOrsay1Source
-// document.querySelector('.js-orsay-pictures').appendChild(imageOrsay1)
+// Orsay
+const imageOrsay1 = new Image()
+imageOrsay1.src = imageOrsay1Source
+document.querySelector('.js-orsay-pictures').appendChild(imageOrsay1)
 
-// const imageOrsay2 = new Image()
-// imageOrsay2.src = imageOrsay2Source
-// document.querySelector('.js-orsay-pictures').appendChild(imageOrsay2)
+const imageOrsay2 = new Image()
+imageOrsay2.src = imageOrsay2Source
+document.querySelector('.js-orsay-pictures').appendChild(imageOrsay2)
 
-// const imageOrsay3 = new Image()
-// imageOrsay3.src = imageOrsay3Source
-// document.querySelector('.js-orsay-pictures').appendChild(imageOrsay3)
+const imageOrsay3 = new Image()
+imageOrsay3.src = imageOrsay3Source
+document.querySelector('.js-orsay-pictures').appendChild(imageOrsay3)
 
-// // Pompidou
-// const imagePompidou1 = new Image()
-// imagePompidou1.src = imagePompidou1Source
-// document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou1)
+// Pompidou
+const imagePompidou1 = new Image()
+imagePompidou1.src = imagePompidou1Source
+document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou1)
 
-// const imagePompidou2 = new Image()
-// imagePompidou2.src = imagePompidou2Source
-// document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou2)
+const imagePompidou2 = new Image()
+imagePompidou2.src = imagePompidou2Source
+document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou2)
 
-// const imagePompidou3 = new Image()
-// imagePompidou3.src = imagePompidou3Source
-// document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou3)
+const imagePompidou3 = new Image()
+imagePompidou3.src = imagePompidou3Source
+document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou3)
 
-// // Grand Palais
-// const imagePalais1 = new Image()
-// imagePalais1.src = imagePalais1Source
-// document.querySelector('.js-palais-pictures').appendChild(imagePalais1)
+// Grand Palais
+const imagePalais1 = new Image()
+imagePalais1.src = imagePalais1Source
+document.querySelector('.js-palais-pictures').appendChild(imagePalais1)
 
-// const imagePalais2 = new Image()
-// imagePalais2.src = imagePalais2Source
-// document.querySelector('.js-palais-pictures').appendChild(imagePalais2)
+const imagePalais2 = new Image()
+imagePalais2.src = imagePalais2Source
+document.querySelector('.js-palais-pictures').appendChild(imagePalais2)
 
-// const imagePalais3 = new Image()
-// imagePalais3.src = imagePalais3Source
-// document.querySelector('.js-palais-pictures').appendChild(imagePalais3)
+const imagePalais3 = new Image()
+imagePalais3.src = imagePalais3Source
+document.querySelector('.js-palais-pictures').appendChild(imagePalais3)
 
 
 /***********************************************************************************
@@ -216,8 +216,22 @@ window.addEventListener('resize', () => {
  * slider
  */
 
+const $louvrePopup = document.querySelector('.js-louvre')
+const $orsayPopup = document.querySelector('.js-orsay')
+const $pompidouPopup = document.querySelector('.js-pompidou')
+const $palaisPopup = document.querySelector('.js-palais')
+const popups = [$louvrePopup, $orsayPopup, $pompidouPopup, $palaisPopup]
+
+
 //palais
 buttonPalais.addEventListener('click', () => {
+
+    for (const _element of popups) {
+        if (_element.classList.contains('focused')) {
+            _element.classList.remove('focused')
+        }
+    }
+    $palaisPopup.classList.add('focused')
 
     buttonPalais.classList.add('is-unactiv')
     buttonLouvre.classList.add('is-unactiv')
@@ -254,6 +268,13 @@ buttonPalais.addEventListener('click', () => {
 //orsay
 
 buttonOrsay.addEventListener('click', () => {
+
+    for (const _element of popups) {
+        if (_element.classList.contains('focused')) {
+            _element.classList.remove('focused')
+        }
+    }
+    $orsayPopup.classList.add('focused')
 
     buttonPalais.classList.remove('is-unactiv')
     buttonOrsay.classList.add('is-unactiv')
@@ -292,6 +313,13 @@ buttonOrsay.addEventListener('click', () => {
 //louvre
 buttonLouvre.addEventListener('click', () => {
 
+    for (const _element of popups) {
+        if (_element.classList.contains('focused')) {
+            _element.classList.remove('focused')
+        }
+    }
+    $louvrePopup.classList.add('focused')
+
     buttonOrsay.classList.remove('is-unactiv')
     buttonOrsay.classList.remove('button-orsay')
     buttonOrsay.classList.remove('button-louvre')
@@ -327,6 +355,13 @@ buttonLouvre.addEventListener('click', () => {
 })
 //pompidou
 buttonPompidou.addEventListener('click', () => {
+
+    for (const _element of popups) {
+        if (_element.classList.contains('focused')) {
+            _element.classList.remove('focused')
+        }
+    }
+    $pompidouPopup.classList.add('focused')
 
     buttonOrsay.classList.add('is-unactiv')
     buttonLouvre.classList.remove('button-louvre')
