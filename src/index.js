@@ -1,9 +1,7 @@
 import './style/main.styl'
 import * as THREE from 'three'
 import { TweenLite } from 'gsap/all'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 // JS Classes import
-import River from './javascript/River.js'
 import Louvre from './javascript/Louvre.js'
 import Orsay from './javascript/Orsay.js'
 import Pompidou from './javascript/Pompidou.js'
@@ -140,10 +138,6 @@ scene.add(directionalLight)
  * Objects
  */
 
-// River
-const river = new River(sizes)
-scene.add(river.group)
-
 // Louvre
 const louvre = new Louvre()
 scene.add(louvre.group)
@@ -161,9 +155,37 @@ const palais = new Palais()
 scene.add(palais.group)
 
 /**
+ * Particules
+ */
+
+const particulesGroup = new THREE.Group()
+const particlesGeometry = new THREE.SphereGeometry(3, 8, 8)
+const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.02,
+    color: 0x262626
+})
+
+// generating 50 particules
+for (let i = 0; i < 50; i++) {
+    const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+
+    particles.position.x = (Math.random() - 0.5) * 30
+    particles.position.y = (Math.random() - 0.5) * 30
+    particles.position.z = (Math.random() - 0.5) * 30
+
+    particles.rotation.x = Math.random() * Math.PI
+    particles.rotation.y = Math.random() * Math.PI
+
+    particulesGroup.add(particles)
+}
+
+scene.add(particulesGroup)
+
+
+/**
  * Camera
  */
-const camera = new THREE.PerspectiveCamera(100, sizes.width / sizes.height, 0.1, 20)
+const camera = new THREE.PerspectiveCamera(100, sizes.width / sizes.height, 2, 20)
 camera.position.z = 3
 scene.add(camera)
 
@@ -175,14 +197,6 @@ const renderer = new THREE.WebGLRenderer()
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(window.devicePixelRatio)
 document.body.appendChild(renderer.domElement)
-
-/**
- * Camera controls
- */
-
-const cameraControls = new OrbitControls(camera, renderer.domElement)
-cameraControls.zoomSpeed  = 0.3
-cameraControls.enableDamping = true
 
 
 
@@ -202,7 +216,7 @@ window.addEventListener('resize', () => {
 /**
  * slider
  */
- 
+
 //palais
 buttonPalais.addEventListener('click', () => {
 
@@ -242,38 +256,38 @@ buttonPalais.addEventListener('click', () => {
 
 buttonOrsay.addEventListener('click', () => {
 
-        buttonPalais.classList.remove('is-unactiv')
-        buttonOrsay.classList.add('is-unactiv')
-        buttonOrsay.classList.add('button-louvre')
-        buttonLouvre.classList.remove('is-unactiv')
-        buttonLouvre.classList.remove('is-back')
-        buttonLouvre.classList.add('button-louvre')
-        buttonPompidou.classList.add('is-unactiv')
+    buttonPalais.classList.remove('is-unactiv')
+    buttonOrsay.classList.add('is-unactiv')
+    buttonOrsay.classList.add('button-louvre')
+    buttonLouvre.classList.remove('is-unactiv')
+    buttonLouvre.classList.remove('is-back')
+    buttonLouvre.classList.add('button-louvre')
+    buttonPompidou.classList.add('is-unactiv')
 
-        TweenLite.to(
-            palais.palais.position,
-            1,
-            {
-                x: palais.position = -20,
-                ease: 'Power3.easeInOut',
-            }
-        )
-        TweenLite.to(
-            orsay.orsay.position,
-            1,
-            {
-                x: orsay.position = 0,
-                ease: 'Power3.easeInOut',
-            }
-        )
-        TweenLite.to(
-            louvre.louvre.position,
-            1,
-            {
-                x: louvre.position = 20,
-                ease: 'Power3.easeInOut',
-            }
-        )
+    TweenLite.to(
+        palais.palais.position,
+        1,
+        {
+            x: palais.position = -20,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        orsay.orsay.position,
+        1,
+        {
+            x: orsay.position = 0,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        louvre.louvre.position,
+        1,
+        {
+            x: louvre.position = 20,
+            ease: 'Power3.easeInOut',
+        }
+    )
 })
 
 //louvre
@@ -346,6 +360,9 @@ buttonPompidou.addEventListener('click', () => {
 // let hoverLouvre = false
 const loop = () => {
     window.requestAnimationFrame(loop)
+
+    // particules
+    particulesGroup.rotation.y += 0.002
 
     // Camera
     camera.lookAt(scene.position)
