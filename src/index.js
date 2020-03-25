@@ -1,6 +1,7 @@
 import './style/main.styl'
 import * as THREE from 'three'
 import { TweenLite } from 'gsap/all'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 // JS Classes import
 import River from './javascript/River.js'
 import Louvre from './javascript/Louvre.js'
@@ -21,61 +22,70 @@ import imagePalais1Source from './images/palais1.jpg'
 import imagePalais2Source from './images/palais2.jpg'
 import imagePalais3Source from './images/palais3.jpg'
 
+const buttonPalais = document.querySelector('.button-palais')
+const buttonOrsay = document.querySelector('.button-orsay')
+const buttonLouvre = document.querySelector('.button-louvre')
+const buttonPompidou = document.querySelector('.button-pompidou')
+
+buttonPalais.classList.add('is-unactiv')
+buttonLouvre.classList.add('is-unactiv')
+buttonPompidou.classList.add('is-unactiv')
+
 /**
  * Images
  */
 
-// Louvre
-const imageLouvre1 = new Image()
-imageLouvre1.src = imageLouvre1Source
-document.querySelector('.js-louvre-pictures').appendChild(imageLouvre1)
+// // Louvre
+// const imageLouvre1 = new Image()
+// imageLouvre1.src = imageLouvre1Source
+// document.querySelector('.js-louvre-pictures').appendChild(imageLouvre1)
 
-const imageLouvre2 = new Image()
-imageLouvre2.src = imageLouvre2Source
-document.querySelector('.js-louvre-pictures').appendChild(imageLouvre2)
+// const imageLouvre2 = new Image()
+// imageLouvre2.src = imageLouvre2Source
+// document.querySelector('.js-louvre-pictures').appendChild(imageLouvre2)
 
-const imageLouvre3 = new Image()
-imageLouvre3.src = imageLouvre3Source
-document.querySelector('.js-louvre-pictures').appendChild(imageLouvre3)
+// const imageLouvre3 = new Image()
+// imageLouvre3.src = imageLouvre3Source
+// document.querySelector('.js-louvre-pictures').appendChild(imageLouvre3)
 
-// Orsay
-const imageOrsay1 = new Image()
-imageOrsay1.src = imageOrsay1Source
-document.querySelector('.js-orsay-pictures').appendChild(imageOrsay1)
+// // Orsay
+// const imageOrsay1 = new Image()
+// imageOrsay1.src = imageOrsay1Source
+// document.querySelector('.js-orsay-pictures').appendChild(imageOrsay1)
 
-const imageOrsay2 = new Image()
-imageOrsay2.src = imageOrsay2Source
-document.querySelector('.js-orsay-pictures').appendChild(imageOrsay2)
+// const imageOrsay2 = new Image()
+// imageOrsay2.src = imageOrsay2Source
+// document.querySelector('.js-orsay-pictures').appendChild(imageOrsay2)
 
-const imageOrsay3 = new Image()
-imageOrsay3.src = imageOrsay3Source
-document.querySelector('.js-orsay-pictures').appendChild(imageOrsay3)
+// const imageOrsay3 = new Image()
+// imageOrsay3.src = imageOrsay3Source
+// document.querySelector('.js-orsay-pictures').appendChild(imageOrsay3)
 
-// Pompidou
-const imagePompidou1 = new Image()
-imagePompidou1.src = imagePompidou1Source
-document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou1)
+// // Pompidou
+// const imagePompidou1 = new Image()
+// imagePompidou1.src = imagePompidou1Source
+// document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou1)
 
-const imagePompidou2 = new Image()
-imagePompidou2.src = imagePompidou2Source
-document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou2)
+// const imagePompidou2 = new Image()
+// imagePompidou2.src = imagePompidou2Source
+// document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou2)
 
-const imagePompidou3 = new Image()
-imagePompidou3.src = imagePompidou3Source
-document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou3)
+// const imagePompidou3 = new Image()
+// imagePompidou3.src = imagePompidou3Source
+// document.querySelector('.js-pompidou-pictures').appendChild(imagePompidou3)
 
-// Grand Palais
-const imagePalais1 = new Image()
-imagePalais1.src = imagePalais1Source
-document.querySelector('.js-palais-pictures').appendChild(imagePalais1)
+// // Grand Palais
+// const imagePalais1 = new Image()
+// imagePalais1.src = imagePalais1Source
+// document.querySelector('.js-palais-pictures').appendChild(imagePalais1)
 
-const imagePalais2 = new Image()
-imagePalais2.src = imagePalais2Source
-document.querySelector('.js-palais-pictures').appendChild(imagePalais2)
+// const imagePalais2 = new Image()
+// imagePalais2.src = imagePalais2Source
+// document.querySelector('.js-palais-pictures').appendChild(imagePalais2)
 
-const imagePalais3 = new Image()
-imagePalais3.src = imagePalais3Source
-document.querySelector('.js-palais-pictures').appendChild(imagePalais3)
+// const imagePalais3 = new Image()
+// imagePalais3.src = imagePalais3Source
+// document.querySelector('.js-palais-pictures').appendChild(imagePalais3)
 
 
 /***********************************************************************************
@@ -148,9 +158,9 @@ scene.add(palais.group)
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(100, sizes.width / sizes.height, 0.1, 20)
-camera.position.z = 8
-camera.position.x = 10
+camera.position.z = 3
 scene.add(camera)
+
 
 /**
  * Renderer
@@ -159,6 +169,16 @@ const renderer = new THREE.WebGLRenderer()
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(window.devicePixelRatio)
 document.body.appendChild(renderer.domElement)
+
+/**
+ * Camera controls
+ */
+
+const cameraControls = new OrbitControls(camera, renderer.domElement)
+cameraControls.zoomSpeed  = 0.3
+cameraControls.enableDamping = true
+
+
 
 /**
  * Resize
@@ -174,59 +194,203 @@ window.addEventListener('resize', () => {
 })
 
 /**
- * Zoom
+ * slider
  */
+ 
+//palais
+buttonPalais.addEventListener('click', () => {
 
-document.addEventListener('click', () => {
-    if (hoverLouvre) {
-        console.log('click sur le musée')
+    buttonPalais.classList.add('is-unactiv')
+    buttonLouvre.classList.add('is-unactiv')
+    buttonPompidou.classList.add('is-unactiv')
+    buttonOrsay.classList.remove('is-unactiv')
+    buttonOrsay.classList.add('button-orsay')
+    buttonOrsay.classList.remove('is-back')
+
+    TweenLite.to(
+        louvre.louvre.position,
+        1,
+        {
+            x: louvre.position = 20,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        palais.palais.position,
+        1,
+        {
+            x: palais.position = 0,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        orsay.orsay.position,
+        1,
+        {
+            x: orsay.position = 20,
+            ease: 'Power3.easeInOut',
+        }
+    )
+})
+//orsay
+
+buttonOrsay.addEventListener('click', () => {
+
+        buttonPalais.classList.remove('is-unactiv')
+        buttonOrsay.classList.add('is-unactiv')
+        buttonOrsay.classList.add('button-louvre')
+        buttonLouvre.classList.remove('is-unactiv')
+        buttonLouvre.classList.remove('is-back')
+        buttonLouvre.classList.add('button-louvre')
+        buttonPompidou.classList.add('is-unactiv')
 
         TweenLite.to(
-            camera.position,
+            palais.palais.position,
             1,
             {
-                // x: camera.position.x - 5,
-                z: camera.position.z = 3,
+                x: palais.position = -20,
                 ease: 'Power3.easeInOut',
-                // onComplete: () =>
-                // {
-                //     console.log('terminé')
-
-                //     TweenLite.to(
-                //         camera.position,
-                //         1,
-                //         {
-                //             y: camera.position.y + 1,
-                //             x: camera.position.x + 1,
-                //         }
-                //     )
-                // }
             }
         )
-    }
+        TweenLite.to(
+            orsay.orsay.position,
+            1,
+            {
+                x: orsay.position = 0,
+                ease: 'Power3.easeInOut',
+            }
+        )
+        TweenLite.to(
+            louvre.louvre.position,
+            1,
+            {
+                x: louvre.position = 20,
+                ease: 'Power3.easeInOut',
+            }
+        )
+})
+
+// if(musepute == true){
+//     buttonOrsay.addEventListener('click', () => {
+
+//         buttonPalais.classList.remove('is-unactiv')
+//         buttonOrsay.classList.add('is-unactiv')
+//         buttonLouvre.classList.add('is-unactiv')
+//         buttonPompidou.classList.add('is-unactiv')
+//         buttonOrsay.classList.remove('is-back')
+
+//         TweenLite.to(
+//             palais.palais.position,
+//             1,
+//             {
+//                 x: palais.position = -20,
+//                 ease: 'Power3.easeInOut',
+//             }
+//         )
+//         TweenLite.to(
+//             orsay.orsay.position,
+//             1,
+//             {
+//                 x: orsay.position = 0,
+//                 ease: 'Power3.easeInOut',
+//             }
+//         )
+//         TweenLite.to(
+//             louvre.louvre.position,
+//             1,
+//             {
+//                 x: louvre.position = 20,
+//                 ease: 'Power3.easeInOut',
+//             }
+//         )
+// })
+// musepute = false
+// }
+//louvre
+buttonLouvre.addEventListener('click', () => {
+
+    buttonOrsay.classList.remove('is-unactiv')
+    buttonOrsay.classList.remove('button-orsay')
+    buttonOrsay.classList.remove('button-louvre')
+    buttonOrsay.classList.add('is-back')
+    buttonLouvre.classList.add('is-unactiv')
+    buttonPompidou.classList.remove('is-unactiv')
+    buttonPalais.classList.add('is-unactiv')
+
+    TweenLite.to(
+        orsay.orsay.position,
+        1,
+        {
+            x: orsay.position = -20,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        louvre.louvre.position,
+        1,
+        {
+            x: louvre.position = 0,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        pompidou.pompidou.position,
+        1,
+        {
+            x: pompidou.position = 20,
+            ease: 'Power3.easeInOut',
+        }
+    )
+})
+//pompidou
+buttonPompidou.addEventListener('click', () => {
+
+    buttonOrsay.classList.add('is-unactiv')
+    buttonLouvre.classList.remove('button-louvre')
+    buttonLouvre.classList.add('is-back')
+    buttonLouvre.classList.remove('is-unactiv')
+    buttonPompidou.classList.add('is-unactiv')
+    buttonPalais.classList.add('is-unactiv')
+
+    TweenLite.to(
+        louvre.louvre.position,
+        1,
+        {
+            x: louvre.position = -20,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        pompidou.pompidou.position,
+        1,
+        {
+            x: pompidou.position = 0,
+            ease: 'Power3.easeInOut',
+        }
+    )
 })
 
 /**
  * Loop
  */
-let hoverLouvre = false
+// let hoverLouvre = false
 const loop = () => {
     window.requestAnimationFrame(loop)
 
     // Camera
     camera.lookAt(scene.position)
 
-    // Cursor raycasting
-    const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
-    raycaster.setFromCamera(raycasterCursor, camera)
+    // // Cursor raycasting
+    // const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
+    // raycaster.setFromCamera(raycasterCursor, camera)
 
-    const intersects = raycaster.intersectObject(louvre.group, true)
-    if (intersects.length) {
-        hoverLouvre = true
-    }
-    else {
-        hoverLouvre = false
-    }
+    // const intersects = raycaster.intersectObject(louvre.group, true)
+    // if (intersects.length) {
+    //     hoverLouvre = true
+    // }
+    // else {
+    //     hoverLouvre = false
+    // }
 
     // Render
     renderer.render(scene, camera)
