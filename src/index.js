@@ -1,5 +1,6 @@
 import './style/main.styl'
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { TweenLite } from 'gsap/all'
 // JS Classes import
 import Louvre from './javascript/Louvre.js'
@@ -186,9 +187,8 @@ scene.add(particulesGroup)
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(100, sizes.width / sizes.height, 2, 20)
-camera.position.z = 3
+camera.position.z = 8
 scene.add(camera)
-
 
 /**
  * Renderer
@@ -197,7 +197,6 @@ const renderer = new THREE.WebGLRenderer()
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(window.devicePixelRatio)
 document.body.appendChild(renderer.domElement)
-
 
 
 /**
@@ -239,7 +238,7 @@ buttonPalais.addEventListener('click', () => {
         palais.palais.position,
         1,
         {
-            x: palais.position = 0,
+            x: palais.position = -3,
             ease: 'Power3.easeInOut',
         }
     )
