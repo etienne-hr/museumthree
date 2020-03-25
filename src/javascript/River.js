@@ -17,7 +17,7 @@ export default class River {
         shape.bezierCurveTo(-1, 2, -7, 2, -11, -7) // curve back to bottom left
 
         const geometry = new THREE.ShapeGeometry(shape, 32)
-        const material = new THREE.MeshBasicMaterial({ color: 0x99E1E5 })
+        const material = new THREE.MeshStandardMaterial({ color: 0x99E1E5 })
         const mesh = new THREE.Mesh(geometry, material)
 
         this.group.add(mesh)
