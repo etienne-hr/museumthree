@@ -1,26 +1,32 @@
-# Webpack Template
+# Museum of Museums
 
-## Features
+[Museum of Museums Website](https://hugoleroyhl.github.io/museedesmusees/)
 
-- Basic files support (HTML, CSS, Stylus, JS, Images, Fonts)
-- Extracted CSS
-- Transpilled JS (with Babel)
-- Sourcemaps
-- Clean dist
-- Dev server (with local network support)
-- Static Files
-- Cache breaker
+## Info :clipboard:
 
-## Instuctions
+This is a school project. Through this project, we wanted to show that museum buildings are also masterpieces as well as the works inside them.
 
-Install dependencies
+## Features :computer:
 
-```npm i```
+Presentation Slider
+museum desk
+3D museums
+-Louvre
+-Pompidou
+-Orsay
+-The Grand palais
 
-Launch dev server
+## Language used and techno :loop:
 
-```npm run dev```
+-HTML 5
+-CSS 3
+-JavaScript
+-ThreeJS
 
-Build for production
+## Team :woman: :man: 
 
-```npm run build```
+- :woman: Cloé Coupris
+- :woman: Zoé Vincent
+- :man: Etienne Haller
+- :man: Hugo Leroy
+- :man: Jean Cassam-Chenaï
