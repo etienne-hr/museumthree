@@ -7,6 +7,7 @@ import Louvre from './javascript/Louvre.js'
 import Orsay from './javascript/Orsay.js'
 import Pompidou from './javascript/Pompidou.js'
 import Palais from './javascript/Palais.js'
+import Display from './javascript/Display.js'
 // Images import
 import imageLouvre1Source from './images/louvre1.jpg'
 import imageLouvre2Source from './images/louvre2.jpg'
@@ -20,6 +21,8 @@ import imagePompidou3Source from './images/pompidou3.jpg'
 import imagePalais1Source from './images/palais1.jpg'
 import imagePalais2Source from './images/palais2.jpg'
 import imagePalais3Source from './images/palais3.jpg'
+// textures import
+import goldColorSource from './images/gold/goldcolormap.jpg'
 
 const buttonPalais = document.querySelector('.button-palais')
 const buttonOrsay = document.querySelector('.button-orsay')
@@ -120,16 +123,17 @@ const raycaster = new THREE.Raycaster()
  * Scene
  */
 const scene = new THREE.Scene()
-scene.background = new THREE.Color(0xffffff)
+scene.background = new THREE.Color(0x000000)
 
 /**
  * Lights
  */
-const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
-scene.add( ambientLight );
+const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4)
+scene.add(ambientLight)
 
-const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
-scene.add( pointLight );
+const pointLight = new THREE.PointLight(0xffffff, 0.8)
+pointLight.position.y = 7
+scene.add(pointLight)
 
 // const ambientLight = new THREE.AmbientLight(0xffffff, 0.2)
 // scene.add(ambientLight)
@@ -160,15 +164,23 @@ scene.add(pompidou.group)
 const palais = new Palais()
 scene.add(palais.group)
 
+// display
+const display = new Display()
+scene.add(display.group)
+
 /**
  * Particules
  */
 
 const particulesGroup = new THREE.Group()
-const particlesGeometry = new THREE.SphereGeometry(3, 8, 8)
+const particlesGeometry = new THREE.SphereGeometry(4, 8, 8)
+
+const textureLoader = new THREE.TextureLoader()
+const goldColorTexture = textureLoader.load(goldColorSource)
+
 const particlesMaterial = new THREE.PointsMaterial({
     size: 0.02,
-    color: 0x262626
+    map: goldColorTexture
 })
 
 // generating 50 particules
@@ -191,7 +203,7 @@ scene.add(particulesGroup)
 /**
  * Camera
  */
-const camera = new THREE.PerspectiveCamera(100, sizes.width / sizes.height, 2, 20)
+const camera = new THREE.PerspectiveCamera(100, sizes.width / sizes.height, 2.5, 20)
 camera.position.z = 8
 scene.add(camera)
 
