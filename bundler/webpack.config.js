@@ -33,6 +33,19 @@ module.exports = {
         rules:
         [
             {
+                test: /\.(gltf|glb|fbx)$/,
+                use:
+                [
+                    {
+                        loader: 'file-loader',
+                        options:
+                        {
+                            outputPath: 'models/'
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.html$/,
                 use: ['html-loader']
             },
