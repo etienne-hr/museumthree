@@ -28,8 +28,11 @@ const buttonPalais = document.querySelector('.button-palais')
 const buttonOrsay = document.querySelector('.button-orsay')
 const buttonLouvre = document.querySelector('.button-louvre')
 const buttonPompidou = document.querySelector('.button-pompidou')
+const backOrsay = document.querySelector('.back-orsay')
+const backLouvre = document.querySelector('.back-louvre')
 
-
+backLouvre.classList.add('is-unactiv')
+backOrsay.classList.add('is-unactiv')
 buttonPalais.classList.add('is-unactiv')
 buttonLouvre.classList.add('is-unactiv')
 buttonPompidou.classList.add('is-unactiv')
@@ -321,6 +324,50 @@ buttonOrsay.addEventListener('click', () => {
     )
 })
 
+//backorsay
+backOrsay.addEventListener('click', () => {
+
+    for (const _element of popups) {
+        if (_element.classList.contains('focused')) {
+            _element.classList.remove('focused')
+        }
+    }
+    $orsayPopup.classList.add('focused')
+
+    buttonPalais.classList.remove('is-unactiv')
+    backOrsay.classList.add('is-unactiv')
+    backOrsay.classList.add('button-louvre')
+    buttonLouvre.classList.remove('is-unactiv')
+    buttonLouvre.classList.remove('is-back')
+    buttonLouvre.classList.add('button-louvre')
+    buttonPompidou.classList.add('is-unactiv')
+
+    TweenLite.to(
+        palais.palais.position,
+        1,
+        {
+            x: palais.position = -50,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        orsay.orsay.position,
+        1,
+        {
+            x: orsay.position = -3,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        louvre.louvre.position,
+        1,
+        {
+            x: louvre.position = 50,
+            ease: 'Power3.easeInOut',
+        }
+    )
+})
+
 //louvre
 buttonLouvre.addEventListener('click', () => {
 
@@ -331,10 +378,10 @@ buttonLouvre.addEventListener('click', () => {
     }
     $louvrePopup.classList.add('focused')
 
-    buttonOrsay.classList.remove('is-unactiv')
-    buttonOrsay.classList.remove('button-orsay')
-    buttonOrsay.classList.remove('button-louvre')
-    buttonOrsay.classList.add('is-back')
+    backOrsay.classList.remove('is-unactiv')
+    backOrsay.classList.remove('button-orsay')
+    backOrsay.classList.remove('button-louvre')
+    backOrsay.classList.add('is-back')
     buttonLouvre.classList.add('is-unactiv')
     buttonPompidou.classList.remove('is-unactiv')
     buttonPalais.classList.add('is-unactiv')
@@ -364,6 +411,51 @@ buttonLouvre.addEventListener('click', () => {
         }
     )
 })
+
+//backLouvre
+backLouvre.addEventListener('click', () => {
+
+    for (const _element of popups) {
+        if (_element.classList.contains('focused')) {
+            _element.classList.remove('focused')
+        }
+    }
+    $louvrePopup.classList.add('focused')
+
+    backOrsay.classList.remove('is-unactiv')
+    backOrsay.classList.remove('button-orsay')
+    backOrsay.classList.remove('button-louvre')
+    backOrsay.classList.add('is-back')
+    backLouvre.classList.add('is-unactiv')
+    buttonPompidou.classList.remove('is-unactiv')
+    buttonPalais.classList.add('is-unactiv')
+
+    TweenLite.to(
+        orsay.orsay.position,
+        1,
+        {
+            x: orsay.position = -50,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        louvre.louvre.position,
+        1,
+        {
+            x: louvre.position = -3,
+            ease: 'Power3.easeInOut',
+        }
+    )
+    TweenLite.to(
+        pompidou.pompidou.position,
+        1,
+        {
+            x: pompidou.position = 50,
+            ease: 'Power3.easeInOut',
+        }
+    )
+})
+
 //pompidou
 buttonPompidou.addEventListener('click', () => {
 
@@ -374,10 +466,10 @@ buttonPompidou.addEventListener('click', () => {
     }
     $pompidouPopup.classList.add('focused')
 
-    buttonOrsay.classList.add('is-unactiv')
-    buttonLouvre.classList.remove('button-louvre')
-    buttonLouvre.classList.add('is-back')
-    buttonLouvre.classList.remove('is-unactiv')
+    backOrsay.classList.add('is-unactiv')
+    backLouvre.classList.remove('button-louvre')
+    backLouvre.classList.add('is-back')
+    backLouvre.classList.remove('is-unactiv')
     buttonPompidou.classList.add('is-unactiv')
     buttonPalais.classList.add('is-unactiv')
 
