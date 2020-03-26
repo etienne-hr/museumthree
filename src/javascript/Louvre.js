@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import louvreSource from '../models/Louvre.glb'
 
 export default class Louvre {
     constructor() {
@@ -13,13 +14,12 @@ export default class Louvre {
         gltfLoader.setDRACOLoader(dracoLoader)
 
         gltfLoader.load(
-            '/models/Louvre.gltf',
+            louvreSource,
             (_gltf) => {
                 this.louvre = _gltf.scene.children[0]
                 this.louvre.position.x = 40
                 this.louvre.scale.set(0.001, 0.001, 0.001)
                 this.group.add(this.louvre)
-                console.log(_gltf)
             }
         )
     }

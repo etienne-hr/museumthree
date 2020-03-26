@@ -26,6 +26,7 @@ const buttonOrsay = document.querySelector('.button-orsay')
 const buttonLouvre = document.querySelector('.button-louvre')
 const buttonPompidou = document.querySelector('.button-pompidou')
 
+
 buttonPalais.classList.add('is-unactiv')
 buttonLouvre.classList.add('is-unactiv')
 buttonPompidou.classList.add('is-unactiv')

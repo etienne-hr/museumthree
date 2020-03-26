@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import palaisSource from '../models/Palais.glb'
 
 export default class Palais {
     constructor() {
@@ -13,7 +14,7 @@ export default class Palais {
         gltfLoader.setDRACOLoader(dracoLoader)
 
         gltfLoader.load(
-            '/models/Palais.gltf',
+            palaisSource,
             (_gltf) => {
                 this.palais = _gltf.scene.children[0]
                 this.palais.position.x = -3
