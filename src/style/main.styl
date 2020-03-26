@@ -11,6 +11,21 @@ body
     height 100%
     overflow hidden
 
+// Responsive
+.responsive
+    display none
+@media screen and (orientation:portrait)
+    .responsive
+        display block
+        position absolute
+        display flex
+        justify-content center
+        align-items center
+        background-color #000
+        height 100%
+        width 100%
+        z-index 1000
+
 // Library kit UI
 *
     font-family 'Merriweather', serif
