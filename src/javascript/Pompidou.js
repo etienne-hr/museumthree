@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import pompidouSource from '../models/Pompidou.glb';
 
 export default class Pompidou {
     constructor() {
@@ -13,7 +14,7 @@ export default class Pompidou {
         gltfLoader.setDRACOLoader(dracoLoader)
 
         gltfLoader.load(
-            '/models/Pompidou.gltf',
+            pompidouSource,
             (_gltf) => {
                 this.pompidou = _gltf.scene.children[0]
                 this.pompidou.scale.set(0.05, 0.05, 0.05)

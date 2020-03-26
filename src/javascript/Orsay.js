@@ -1,8 +1,9 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import orsaySource from '../models/Orsay.glb'
 
-export default class Palais {
+export default class Orsay {
     constructor() {
         this.group = new THREE.Group()
 
@@ -13,7 +14,7 @@ export default class Palais {
         gltfLoader.setDRACOLoader(dracoLoader)
 
         gltfLoader.load(
-            '/models/Orsay.gltf',
+            orsaySource,
             (_gltf) => {
                 this.orsay = _gltf.scene.children[0]
                 this.orsay.position.x = 20
