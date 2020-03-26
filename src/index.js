@@ -1,6 +1,5 @@
 import './style/main.styl'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { TweenLite } from 'gsap/all'
 // JS Classes import
 import Louvre from './javascript/Louvre.js'
@@ -23,19 +22,6 @@ import imagePalais2Source from './images/palais2.jpg'
 import imagePalais3Source from './images/palais3.jpg'
 // textures import
 import goldColorSource from './images/gold/goldcolormap.jpg'
-
-const buttonPalais = document.querySelector('.button-palais')
-const buttonOrsay = document.querySelector('.button-orsay')
-const buttonLouvre = document.querySelector('.button-louvre')
-const buttonPompidou = document.querySelector('.button-pompidou')
-const backOrsay = document.querySelector('.back-orsay')
-const backLouvre = document.querySelector('.back-louvre')
-
-backLouvre.classList.add('is-unactiv')
-backOrsay.classList.add('is-unactiv')
-buttonPalais.classList.add('is-unactiv')
-buttonLouvre.classList.add('is-unactiv')
-buttonPompidou.classList.add('is-unactiv')
 
 /**
  * Images
@@ -118,12 +104,6 @@ window.addEventListener('mousemove', (_event) => {
 })
 
 /**
- * raycaster
- */
-const raycaster = new THREE.Raycaster()
-
-
-/**
  * Scene
  */
 const scene = new THREE.Scene()
@@ -139,14 +119,11 @@ const pointLight = new THREE.PointLight(0xffffff, 0.8)
 pointLight.position.y = 7
 scene.add(pointLight)
 
-// const ambientLight = new THREE.AmbientLight(0xffffff, 0.2)
-// scene.add(ambientLight)
-
-// const directionalLight = new THREE.DirectionalLight(0x00fffc, 0.3)
-// directionalLight.position.x = - 2
-// directionalLight.position.y = 3
-// directionalLight.position.z = 4
-// scene.add(directionalLight)
+const directionalLight = new THREE.DirectionalLight(0x00fffc, 0.3)
+directionalLight.position.x = - 2
+directionalLight.position.y = 3
+directionalLight.position.z = 4
+scene.add(directionalLight)
 
 /**
  * Objects
@@ -237,6 +214,24 @@ window.addEventListener('resize', () => {
 /**
  * slider
  */
+/** The slider work with 6 buttons every time we click on
+ * on a button an another disappear
+ * There is two types of button : the button next, and 
+ * the button previous
+ * We switch class by using classList : add or remove
+ */
+const buttonPalais = document.querySelector('.button-palais')
+const buttonOrsay = document.querySelector('.button-orsay')
+const buttonLouvre = document.querySelector('.button-louvre')
+const buttonPompidou = document.querySelector('.button-pompidou')
+const backOrsay = document.querySelector('.back-orsay')
+const backLouvre = document.querySelector('.back-louvre')
+
+backLouvre.classList.add('is-unactiv')
+backOrsay.classList.add('is-unactiv')
+buttonPalais.classList.add('is-unactiv')
+buttonLouvre.classList.add('is-unactiv')
+buttonPompidou.classList.add('is-unactiv')
 
 const $louvrePopup = document.querySelector('.js-louvre')
 const $orsayPopup = document.querySelector('.js-orsay')
@@ -279,6 +274,7 @@ buttonPalais.addEventListener('click', () => {
         }
     )
 })
+
 //orsay
 
 buttonOrsay.addEventListener('click', () => {
@@ -494,30 +490,15 @@ buttonPompidou.addEventListener('click', () => {
 /**
  * Loop
  */
-// let hoverLouvre = false
+
 const loop = () => {
     window.requestAnimationFrame(loop)
 
     // particules
     particulesGroup.rotation.y += 0.002
 
-    // palais.group.rotation.y += 0.05
-
     // Camera
     camera.lookAt(scene.position)
-
-    
-    // // Cursor raycasting
-    // const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
-    // raycaster.setFromCamera(raycasterCursor, camera)
-
-    // const intersects = raycaster.intersectObject(louvre.group, true)
-    // if (intersects.length) {
-    //     hoverLouvre = true
-    // }
-    // else {
-    //     hoverLouvre = false
-    // }
 
     // Render
     renderer.render(scene, camera)
