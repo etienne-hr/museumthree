@@ -17,8 +17,10 @@ export default class Orsay {
             orsaySource,
             (_gltf) => {
                 this.orsay = _gltf.scene.children[0]
-                this.orsay.position.x = 20
-                this.orsay.scale.set(0.001, 0.001, 0.001)
+                this.orsay.position.x = 60
+                this.orsay.position.y = -1.8
+                this.orsay.position.z = 3
+                this.orsay.scale.set(0.0007, 0.0007, 0.0007)
                 this.group.add(this.orsay)
             }
         )

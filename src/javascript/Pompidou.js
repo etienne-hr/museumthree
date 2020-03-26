@@ -17,8 +17,10 @@ export default class Pompidou {
             pompidouSource,
             (_gltf) => {
                 this.pompidou = _gltf.scene.children[0]
-                this.pompidou.scale.set(0.05, 0.05, 0.05)
+                this.pompidou.scale.set(0.03, 0.03, 0.03)
                 this.pompidou.position.x = 60
+                this.pompidou.position.y = -2
+                this.pompidou.position.z = 2
                 this.group.add(this.pompidou)
             }
         )

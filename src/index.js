@@ -165,6 +165,7 @@ scene.add(pompidou.group)
 const palais = new Palais()
 scene.add(palais.group)
 
+
 // display
 const display = new Display()
 scene.add(display.group)
@@ -259,18 +260,10 @@ buttonPalais.addEventListener('click', () => {
     buttonOrsay.classList.remove('is-back')
 
     TweenLite.to(
-        louvre.louvre.position,
-        1,
-        {
-            x: louvre.position = 20,
-            ease: 'Power3.easeInOut',
-        }
-    )
-    TweenLite.to(
         palais.palais.position,
         1,
         {
-            x: palais.position = -3,
+            x: palais.position = -10,
             ease: 'Power3.easeInOut',
         }
     )
@@ -278,7 +271,7 @@ buttonPalais.addEventListener('click', () => {
         orsay.orsay.position,
         1,
         {
-            x: orsay.position = 20,
+            x: orsay.position = 50,
             ease: 'Power3.easeInOut',
         }
     )
@@ -306,7 +299,7 @@ buttonOrsay.addEventListener('click', () => {
         palais.palais.position,
         1,
         {
-            x: palais.position = -20,
+            x: palais.position = -50,
             ease: 'Power3.easeInOut',
         }
     )
@@ -314,7 +307,7 @@ buttonOrsay.addEventListener('click', () => {
         orsay.orsay.position,
         1,
         {
-            x: orsay.position = 0,
+            x: orsay.position = -3,
             ease: 'Power3.easeInOut',
         }
     )
@@ -322,7 +315,7 @@ buttonOrsay.addEventListener('click', () => {
         louvre.louvre.position,
         1,
         {
-            x: louvre.position = 20,
+            x: louvre.position = 50,
             ease: 'Power3.easeInOut',
         }
     )
@@ -350,7 +343,7 @@ buttonLouvre.addEventListener('click', () => {
         orsay.orsay.position,
         1,
         {
-            x: orsay.position = -20,
+            x: orsay.position = -50,
             ease: 'Power3.easeInOut',
         }
     )
@@ -358,7 +351,7 @@ buttonLouvre.addEventListener('click', () => {
         louvre.louvre.position,
         1,
         {
-            x: louvre.position = 0,
+            x: louvre.position = -3,
             ease: 'Power3.easeInOut',
         }
     )
@@ -366,7 +359,7 @@ buttonLouvre.addEventListener('click', () => {
         pompidou.pompidou.position,
         1,
         {
-            x: pompidou.position = 20,
+            x: pompidou.position = 50,
             ease: 'Power3.easeInOut',
         }
     )
@@ -392,7 +385,7 @@ buttonPompidou.addEventListener('click', () => {
         louvre.louvre.position,
         1,
         {
-            x: louvre.position = -20,
+            x: louvre.position = -50,
             ease: 'Power3.easeInOut',
         }
     )
@@ -400,7 +393,7 @@ buttonPompidou.addEventListener('click', () => {
         pompidou.pompidou.position,
         1,
         {
-            x: pompidou.position = 0,
+            x: pompidou.position = -4,
             ease: 'Power3.easeInOut',
         }
     )
@@ -416,9 +409,12 @@ const loop = () => {
     // particules
     particulesGroup.rotation.y += 0.002
 
+    // palais.group.rotation.y += 0.05
+
     // Camera
     camera.lookAt(scene.position)
 
+    
     // // Cursor raycasting
     // const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
     // raycaster.setFromCamera(raycasterCursor, camera)

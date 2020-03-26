@@ -18,7 +18,9 @@ export default class Louvre {
             (_gltf) => {
                 this.louvre = _gltf.scene.children[0]
                 this.louvre.position.x = 40
-                this.louvre.scale.set(0.03, 0.03, 0.03)
+                this.louvre.position.y = -1.8
+                this.louvre.position.z = 3
+                this.louvre.scale.set(0.01, 0.01, 0.01)
                 this.group.add(this.louvre)
             }
         )

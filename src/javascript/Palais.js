@@ -17,12 +17,10 @@ export default class Palais {
             palaisSource,
             (_gltf) => {
                 this.palais = _gltf.scene.children[0]
-                this.palais.position.x = -3
+                this.palais.position.x = -10
+                this.palais.position.y = -1.8
                 this.palais.position.z = 3
-                this.palais.scale.set(0.02, 0.02, 0.02)
-                this.palais.material = new THREE.MeshToonMaterial({
-                    color: 0x60F323
-                    })
+                this.palais.scale.set(0.03, 0.03, 0.03)
                 this.group.add(this.palais)
             }
         )
