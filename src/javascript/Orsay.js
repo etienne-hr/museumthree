@@ -17,6 +17,7 @@ export default class Palais {
             (_gltf) => {
                 this.orsay = _gltf.scene.children[0]
                 this.orsay.position.x = 20
+                this.orsay.scale.set(0.001, 0.001, 0.001)
                 this.group.add(this.orsay)
             }
         )

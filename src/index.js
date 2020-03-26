@@ -125,15 +125,20 @@ scene.background = new THREE.Color(0xffffff)
 /**
  * Lights
  */
+const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
+scene.add( ambientLight );
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.2)
-scene.add(ambientLight)
+const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+scene.add( pointLight );
 
-const directionalLight = new THREE.DirectionalLight(0x00fffc, 0.3)
-directionalLight.position.x = - 2
-directionalLight.position.y = 3
-directionalLight.position.z = 4
-scene.add(directionalLight)
+// const ambientLight = new THREE.AmbientLight(0xffffff, 0.2)
+// scene.add(ambientLight)
+
+// const directionalLight = new THREE.DirectionalLight(0x00fffc, 0.3)
+// directionalLight.position.x = - 2
+// directionalLight.position.y = 3
+// directionalLight.position.z = 4
+// scene.add(directionalLight)
 
 /**
  * Objects
