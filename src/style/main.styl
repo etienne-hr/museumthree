@@ -47,6 +47,8 @@ p
     text-transform uppercase
     background-color transparent
     cursor pointer
+    z-index 0
+
 
 .button-palais
     top 2%
@@ -88,7 +90,7 @@ p
     left 0
     width 100%
     height 100%
-    z-index: 2
+    z-index 2
     opacity 0
     pointer-events none
     will-change opacity
@@ -113,6 +115,23 @@ p
         display flex
         flex-direction column
         justify-content space-around
+
+@media (max-width: 1635px)
+    .popup
+        .pictures
+            position absolute
+            left 65%
+            top 0
+            height 80%
+            padding 50px
+            display flex
+            flex-direction column
+            justify-content space-arou
+
+@media (max-height: 700px)
+    .popup
+        .pictures
+            display none
 
 
 .focused
