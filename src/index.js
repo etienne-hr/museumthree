@@ -20,8 +20,20 @@ import imagePompidou3Source from './images/pompidou3.jpg'
 import imagePalais1Source from './images/palais1.jpg'
 import imagePalais2Source from './images/palais2.jpg'
 import imagePalais3Source from './images/palais3.jpg'
+//loader import
+import gifLoaderSource from './images/gifload.gif'
 // textures import
 import goldColorSource from './images/gold/goldcolormap.jpg'
+
+const gifLoader = new Image()
+gifLoader.src = gifLoaderSource
+document.querySelector('.loader-js').appendChild(gifLoader)
+
+window.addEventListener('load', () =>
+{
+    const loader = document.querySelector('.loader-js')
+    loader.className += ' hidden'
+})
 
 /**
  * Images
