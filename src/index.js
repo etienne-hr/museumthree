@@ -1,12 +1,21 @@
+//loader import
+import gifLoaderSource from './images/gifload.gif'
+
+const gifLoader = new Image()
+gifLoader.src = gifLoaderSource
+document.querySelector('.loader-js').appendChild(gifLoader)
+
 import './style/main.styl'
 import * as THREE from 'three'
 import { TweenLite } from 'gsap/all'
+
 // JS Classes import
 import Louvre from './javascript/Louvre.js'
 import Orsay from './javascript/Orsay.js'
 import Pompidou from './javascript/Pompidou.js'
 import Palais from './javascript/Palais.js'
 import Display from './javascript/Display.js'
+
 // Images import
 import imageLouvre1Source from './images/louvre1.jpg'
 import imageLouvre2Source from './images/louvre2.jpg'
@@ -20,18 +29,9 @@ import imagePompidou3Source from './images/pompidou3.jpg'
 import imagePalais1Source from './images/palais1.jpg'
 import imagePalais2Source from './images/palais2.jpg'
 import imagePalais3Source from './images/palais3.jpg'
-//loader import
-import gifLoaderSource from './images/gifload.gif'
+
 // textures import
 import goldColorSource from './images/gold/goldcolormap.jpg'
-
-/**
- * fake preloader
- */
-
-const gifLoader = new Image()
-gifLoader.src = gifLoaderSource
-document.querySelector('.loader-js').appendChild(gifLoader)
 
 /**
  * Images
