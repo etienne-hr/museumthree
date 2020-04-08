@@ -22,7 +22,9 @@ export default class Pompidou {
                 this.pompidou.position.y = -2
                 this.pompidou.position.z = 2
                 this.group.add(this.pompidou)
-            }
+                const loader = document.querySelector('.loader-js')
+                loader.className += ' hidden'
+            },
         )
     }
 }

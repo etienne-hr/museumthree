@@ -22,7 +22,7 @@ export default class Palais {
                 this.palais.position.z = 3
                 this.palais.scale.set(0.03, 0.03, 0.03)
                 this.group.add(this.palais)
-            }
+            },
         )
     }
 }

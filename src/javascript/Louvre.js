@@ -22,7 +22,7 @@ export default class Louvre {
                 this.louvre.position.z = 3
                 this.louvre.scale.set(0.01, 0.01, 0.01)
                 this.group.add(this.louvre)
-            }
+            },
         )
     }
 }

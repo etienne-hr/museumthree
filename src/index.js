@@ -25,15 +25,13 @@ import gifLoaderSource from './images/gifload.gif'
 // textures import
 import goldColorSource from './images/gold/goldcolormap.jpg'
 
+/**
+ * fake preloader
+ */
+
 const gifLoader = new Image()
 gifLoader.src = gifLoaderSource
 document.querySelector('.loader-js').appendChild(gifLoader)
-
-window.addEventListener('load', () =>
-{
-    const loader = document.querySelector('.loader-js')
-    loader.className += ' hidden'
-})
 
 /**
  * Images
@@ -161,6 +159,7 @@ scene.add(palais.group)
 // display
 const display = new Display()
 scene.add(display.group)
+
 
 /**
  * Particules

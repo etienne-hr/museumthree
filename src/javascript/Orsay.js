@@ -22,7 +22,7 @@ export default class Orsay {
                 this.orsay.position.z = 3
                 this.orsay.scale.set(0.0007, 0.0007, 0.0007)
                 this.group.add(this.orsay)
-            }
+            },
         )
     }
 }
