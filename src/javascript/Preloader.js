@@ -67,9 +67,10 @@ export default class Preloader{
         this.oncomplete = options.oncomplete
         const loader = this
 		function onprogress(delta){
-            const progress = delta
-            loader.progressPourcentage.textContent = `${Math.floor(progress*100)}`
-            loader.progressLine.style.transform = `scale(${Math.floor(progress)})`
+			const progress = delta
+			console.log(delta)
+            loader.progressPourcentage.textContent = `${Math.round(progress*100)}`
+            loader.progressLine.style.transform = `scale(${Math.round(progress)})`
 		}
 	}
 
