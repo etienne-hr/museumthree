@@ -50,7 +50,7 @@ export default class Preloader{
             loaderPourcentage.style.marginTop = '25px'
             loaderPourcentage.style.color= '#fff'
             loaderPourcentage.style.textAlign = 'center'
-            loaderPourcentage.textContent = `0 %`
+            loaderPourcentage.textContent = `0 `
             this.domElement.appendChild(loaderPourcentage)
 
             this.progressPourcentage = loaderPourcentage
