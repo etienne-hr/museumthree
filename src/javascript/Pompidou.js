@@ -6,7 +6,7 @@ import pompidouSource from '../models/Pompidou.glb';
 export default class Pompidou {
     constructor() {
         this.group = new THREE.Group()
-
+        this.model = pompidouSource
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco/')
 
@@ -14,7 +14,7 @@ export default class Pompidou {
         gltfLoader.setDRACOLoader(dracoLoader)
 
         gltfLoader.load(
-            pompidouSource,
+            this.model,
             (_gltf) => {
                 this.pompidou = _gltf.scene.children[0]
                 this.pompidou.scale.set(0.03, 0.03, 0.03)

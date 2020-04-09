@@ -6,7 +6,7 @@ import orsaySource from '../models/Orsay.glb'
 export default class Orsay {
     constructor() {
         this.group = new THREE.Group()
-
+        this.model =  orsaySource
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco/')
 
@@ -14,7 +14,7 @@ export default class Orsay {
         gltfLoader.setDRACOLoader(dracoLoader)
 
         gltfLoader.load(
-            orsaySource,
+            this.model,
             (_gltf) => {
                 this.orsay = _gltf.scene.children[0]
                 this.orsay.position.x = 60

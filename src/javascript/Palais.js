@@ -6,7 +6,7 @@ import palaisSource from '../models/Palais.glb'
 export default class Palais {
     constructor() {
         this.group = new THREE.Group()
-
+        this.model = palaisSource
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco/')
 
@@ -14,7 +14,7 @@ export default class Palais {
         gltfLoader.setDRACOLoader(dracoLoader)
 
         gltfLoader.load(
-            palaisSource,
+            this.model,
             (_gltf) => {
                 this.palais = _gltf.scene.children[0]
                 this.palais.position.x = -10

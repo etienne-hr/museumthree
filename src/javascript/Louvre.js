@@ -6,7 +6,7 @@ import louvreSource from '../models/Louvre.glb'
 export default class Louvre {
     constructor() {
         this.group = new THREE.Group()
-
+        this.model = louvreSource
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco/')
 
@@ -14,7 +14,7 @@ export default class Louvre {
         gltfLoader.setDRACOLoader(dracoLoader)
 
         gltfLoader.load(
-            louvreSource,
+            this.model,
             (_gltf) => {
                 this.louvre = _gltf.scene.children[0]
                 this.louvre.position.x = 40
