@@ -544,3 +544,6 @@ const loop = () => {
     // Render
     renderer.render(scene, camera)
 }
+
+
+//fixing bug
