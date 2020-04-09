@@ -32,18 +32,7 @@ export default class Preloader{
             loaderDiv.style.transition = 'all 1s ease'
             loaderDiv.style.animation = 'loader-1-inner 1s ease-out alternate infinite'
             this.domElement.appendChild(loaderDiv)
-            const loaderLine = document.createElement("div")
-            loaderLine.style.border = '150px ridge #15617c'
-            loaderLine.style.borderRadius = '50%'
-            loaderLine.style.width = '480px'
-            loaderLine.style.height = '480px'
-            loaderLine.style.background= '#fcf202'
-            loaderLine.style.transform= 'scale(0)'
-            loaderLine.style.transition = 'all 0.4s ease-out'
-            this.progressLine = loaderLine
-
-            loaderLine.style.animation = 'border-zoom 1s ease-out alternate infinite'
-            loaderDiv.appendChild(loaderLine)
+            
             const loaderPourcentage = document.createElement("div")
             loaderPourcentage.style.width= '100px'
             loaderPourcentage.style.height= '100px'
@@ -68,9 +57,7 @@ export default class Preloader{
         const loader = this
 		function onprogress(delta){
 			const progress = delta
-			console.log(delta)
             loader.progressPourcentage.textContent = `${Math.round(progress*100)}`
-            loader.progressLine.style.transform = `scale(${Math.round(progress)})`
 		}
 	}
 
