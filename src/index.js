@@ -545,5 +545,4 @@ const loop = () => {
     renderer.render(scene, camera)
 }
 
-
-//fixing bug
+//fixing online problem
